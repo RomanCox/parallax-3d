@@ -1,0 +1,96 @@
+.main {
+  width: 100vw;
+  max-width: 1920px;
+  height: 100vh;
+  position: relative;
+
+  .logo {
+    width: calc(var(--index) * 7.8);
+    height: calc(var(--index) * 7.8);
+    position: absolute;
+    left: 50%;
+    top: calc(var(--index) * 2.5);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .layers {
+    perspective: 1000px;
+    overflow: hidden;
+
+    .layersContainer {
+      width: 100vw;
+      height: 100vh;
+      transform-style: preserve-3d;
+      transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+      transition: transform var(--transition);
+      will-change: transform;
+
+      .layerItem,
+      .contentContainer,
+      .rainContainer {
+        width: calc(100% + 25vw);
+        height: calc(100% + 25vw);
+        position: absolute;
+        inset: -12.5vw;
+        object-fit: cover;
+      }
+
+      .layerItem {
+        transform: translateZ(var(--z)) scale(var(--scale));
+        pointer-events: none;
+      }
+
+      .contentContainer {
+        height: fit-content;
+        top: 40%;
+        transform: translateZ(180px) scale(.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+
+        .title {
+          font-size: calc(var(--index) * 5.3);
+          font-weight: 900;
+          text-transform: uppercase;letter-spacing: calc(var(--index) * -.15);
+          line-height: 0.8em;
+
+          span {
+            display: block;
+          }
+        }
+
+        .subTitle {
+          text-transform: none;
+          font-family: Merriweather-italic-3d, sans-serif;
+          letter-spacing: normal;
+          font-size: calc(var(--index) * .73);
+          line-height: 5;
+        }
+
+        .link {
+          font-family: Arial, sans-serif;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: calc(var(--index) * .7);
+          letter-spacing: -.02vw;
+          padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+          background-color: transparent;
+          border-radius: 10em;
+          border: 3px rgb(255, 255, 255, .4) solid;
+          color: white;
+          outline: none;
+          cursor: pointer;
+        }
+      }
+
+      .rainContainer {
+        transform: translateZ(190px) scale(.9);
+        pointer-events: none;
+      }
+    }
+  }
+}
