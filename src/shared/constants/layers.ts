@@ -9,7 +9,7 @@ export interface ILayer {
     description: string;
 }
 
-export const layers: ILayer[] = [
+export const layers: Array<ILayer> = [
     {
         id: 1,
         image: ForestImage,
